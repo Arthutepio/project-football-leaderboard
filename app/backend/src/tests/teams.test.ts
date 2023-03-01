@@ -8,12 +8,7 @@ import Teams from '../database/models/Teams';
 import team from './mock/teamsMock';
 
 chai.use(chaiHttp);
-
 const { expect } = chai;
-
-
-
-chai.use(chaiHttp);
 
 describe('Testes para a rota Teams', function () {
 
