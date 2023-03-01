@@ -11,6 +11,9 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Testes para a rota Teams', function () {
+  afterEach(function () {
+    sinon.restore();
+  })
 
   it('Deve buscar todos os times com sucesso', async function () {
     sinon.stub(Teams, 'findAll').resolves(team as Teams[])
@@ -18,4 +21,5 @@ describe('Testes para a rota Teams', function () {
     expect(response.status).to.be.equal(200);
     expect(response.body).to.be.deep.equal(team)
   });
+
 });
