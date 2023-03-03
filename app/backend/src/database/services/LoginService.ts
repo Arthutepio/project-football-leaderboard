@@ -16,6 +16,18 @@ export default class LoginService implements IServiceUser {
     expiresIn: '30d',
   }); // criar um diretório utils
 
+  public decodeToken = (token: string) => jwt.verify(token, secret) as jwt.JwtPayload;
+
+  async authorization(token: string): Promise<Users | null> {
+    const result = this.decodeToken(token);
+
+    const role = await this.model.findOne({
+      attributes: ['role'],
+      where: { email: result.email },
+    });
+    return role;
+  }
+
   async verifyLogin(email: string, password: string): Promise<{
     type: number | null;
     message: string;
