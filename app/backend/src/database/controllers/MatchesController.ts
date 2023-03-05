@@ -35,4 +35,13 @@ export default class MatchesController {
 
     return res.status(200).json({ message: match });
   }
+
+  async updateTeamGoals(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const updatedScoreboard = await this._matchesService
+      .updateTeamGoals(+id, homeTeamGoals, awayTeamGoals);
+
+    return res.status(200).json(updatedScoreboard);
+  }
 }

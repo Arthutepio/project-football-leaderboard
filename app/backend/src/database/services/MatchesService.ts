@@ -66,4 +66,18 @@ export default class MatchesService implements IServiceMatches {
     );
     return 'Finished';
   }
+
+  async updateTeamGoals(id: number, homeGoal: number, awayGoal: number): Promise<Matches | null> {
+    console.log(homeGoal, awayGoal);
+
+    await this.model.update(
+      { homeTeamGoals: homeGoal, awayTeamGoals: awayGoal },
+      { where: { id } },
+    );
+    const updatedScoreboard = await this.model.findOne({
+      where: { id },
+      attributes: ['homeTeamGoals', 'awayTeamGoals'],
+    });
+    return updatedScoreboard;
+  }
 }

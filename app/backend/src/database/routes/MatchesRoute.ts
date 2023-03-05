@@ -11,4 +11,7 @@ matchesRouter.get('/matches', (req: Request, res: Response) =>
 matchesRouter.patch('/matches/:id/finish', authorizationUser, (req: Request, res: Response) =>
   matchesController.finishMatchesById(req, res));
 
+matchesRouter.patch('/matches/:id', authorizationUser, (req: Request, res: Response) =>
+  matchesController.updateTeamGoals(req, res));
+
 export default matchesRouter;
