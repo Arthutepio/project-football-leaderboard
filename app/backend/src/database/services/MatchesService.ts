@@ -68,8 +68,6 @@ export default class MatchesService implements IServiceMatches {
   }
 
   async updateTeamGoals(id: number, homeGoal: number, awayGoal: number): Promise<Matches | null> {
-    console.log(homeGoal, awayGoal);
-
     await this.model.update(
       { homeTeamGoals: homeGoal, awayTeamGoals: awayGoal },
       { where: { id } },
@@ -79,5 +77,20 @@ export default class MatchesService implements IServiceMatches {
       attributes: ['homeTeamGoals', 'awayTeamGoals'],
     });
     return updatedScoreboard;
+  }
+
+  insertMaches(
+    homeTeamId: number,
+    awayTeamId: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<Matches> {
+    return this.model.create({
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+      inProgress: true,
+    });
   }
 }

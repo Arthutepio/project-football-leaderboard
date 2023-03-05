@@ -44,4 +44,12 @@ export default class MatchesController {
 
     return res.status(200).json(updatedScoreboard);
   }
+
+  async insertMaches(req: Request, res: Response) {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    const result = await this._matchesService
+      .insertMaches(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+
+    return res.status(201).json(result);
+  }
 }

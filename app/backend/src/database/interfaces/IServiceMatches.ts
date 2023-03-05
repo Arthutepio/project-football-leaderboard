@@ -6,4 +6,6 @@ export default interface IServiceMatches {
   getMatchesFinished(inProgress: string): Promise<Matches[] | undefined>;
   finishMatchesById(id: number): string;
   updateTeamGoals(id: number, homeGoal: number, awayGoal: number): Promise<Matches | null>;
+  insertMaches(homeTeamId: number, awayTeamId: number,
+    homeTeamGoals: number, awayTeamGoals: number): Promise<Matches>;
 }
