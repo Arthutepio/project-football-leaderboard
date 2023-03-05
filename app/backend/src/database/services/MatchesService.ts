@@ -57,4 +57,13 @@ export default class MatchesService implements IServiceMatches {
       ],
     });
   }
+
+  // pra finalizar uma partida recebe ID e fazer um UPDATE em inProgress de TRUE pra FALSE e retornar status 200 e { "message": "Finished" }
+  finishMatchesById(id: number): string {
+    this.model.update(
+      { inProgress: 'false' },
+      { where: { id } },
+    );
+    return 'Finished';
+  }
 }

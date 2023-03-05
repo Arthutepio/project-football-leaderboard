@@ -28,4 +28,11 @@ export default class MatchesController {
 
     return res.status(200).json(matches);
   }
+
+  finishMatchesById(req: Request, res: Response) {
+    const { id } = req.params;
+    const match = this._matchesService.finishMatchesById(parseInt(id, 10));
+
+    return res.status(200).json({ message: match });
+  }
 }

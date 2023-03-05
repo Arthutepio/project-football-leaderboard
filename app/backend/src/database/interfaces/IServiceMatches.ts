@@ -4,4 +4,5 @@ export default interface IServiceMatches {
   getAllMatches(): Promise<Matches[]>;
   getMatchesInProgress(inProgress: string): Promise<Matches[] | undefined>;
   getMatchesFinished(inProgress: string): Promise<Matches[] | undefined>;
+  finishMatchesById(id: number): string;
 }
