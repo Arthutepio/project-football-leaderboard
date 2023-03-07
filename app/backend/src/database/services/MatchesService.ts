@@ -1,10 +1,12 @@
 import { ModelStatic } from 'sequelize';
-import IServiceMatches from '../interfaces/IServiceMatches';
+import IServiceMatches, { successfulCase, unsuccessfulCase } from '../interfaces/IServiceMatches';
+
 import Matches from '../models/Matches';
 import Teams from '../models/Teams';
 
 export default class MatchesService implements IServiceMatches {
   protected model: ModelStatic<Matches> = Matches;
+  protected modelTeams: ModelStatic<Teams> = Teams;
 
   getAllMatches(): Promise<Matches[]> {
     return this.model.findAll({
@@ -39,7 +41,7 @@ export default class MatchesService implements IServiceMatches {
     });
   }
 
-  // redundate
+  // redundate !== Sergio
   getMatchesFinished(progress: string) {
     return this.model.findAll({
       where: { inProgress: progress },
@@ -79,18 +81,24 @@ export default class MatchesService implements IServiceMatches {
     return updatedScoreboard;
   }
 
-  insertMaches(
+  async insertMaches(
     homeTeamId: number,
     awayTeamId: number,
     homeTeamGoals: number,
     awayTeamGoals: number,
-  ): Promise<Matches> {
-    return this.model.create({
-      homeTeamId,
-      homeTeamGoals,
-      awayTeamId,
-      awayTeamGoals,
-      inProgress: true,
+  ): Promise<unsuccessfulCase | successfulCase> {
+    const isId = (await Promise.all([homeTeamId, awayTeamId]
+      .map(async (id) => this.modelTeams.findByPk(id))));
+
+    if (!isId[0] || !isId[1]) return { type: 404, message: 'There is no team with such id!' };
+
+    if (homeTeamId === awayTeamId) {
+      return { type: 422, message: 'It is not possible to create a match with two equal teams' };
+    }
+
+    const result = await this.model.create({
+      homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress: true,
     });
+    return { type: null, message: result };
   }
 }

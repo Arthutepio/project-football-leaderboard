@@ -47,9 +47,11 @@ export default class MatchesController {
 
   async insertMaches(req: Request, res: Response) {
     const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
-    const result = await this._matchesService
-      .insertMaches(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
 
-    return res.status(201).json(result);
+    const { type, message } = await this._matchesService
+      .insertMaches(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+    if (type) return res.status(type).json({ message });
+
+    return res.status(201).json(message);
   }
 }
