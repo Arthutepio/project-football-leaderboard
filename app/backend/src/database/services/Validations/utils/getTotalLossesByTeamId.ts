@@ -8,7 +8,7 @@ const getTotalLossesByTeamId = (matches: IMatches[], id: number, filter: Tfilter
 
   const totalLossesAway = matches.filter((match) =>
     match.awayTeamId === id && match.awayTeamGoals < match.homeTeamGoals).length;
-  if (filter === 'away') return totalLossesHome;
+  if (filter === 'away') return totalLossesAway;
 
   return totalLossesHome + totalLossesAway;
 };

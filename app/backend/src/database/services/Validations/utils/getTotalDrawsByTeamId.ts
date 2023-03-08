@@ -8,7 +8,7 @@ const getTotalDrawsByTeamId = (matches: IMatches[], id: number, filter: Tfilter)
 
   const totalDrawsAway = matches.filter((match) =>
     match.awayTeamId === id && match.homeTeamGoals === match.awayTeamGoals).length;
-  if (filter === 'away') return totalDrawsHome;
+  if (filter === 'away') return totalDrawsAway;
 
   return totalDrawsHome + totalDrawsAway;
 };

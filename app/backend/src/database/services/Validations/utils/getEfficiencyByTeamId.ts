@@ -4,7 +4,7 @@ import getTotalGamesByTeamId from './getTotalGamesByTeamId';
 import getTotalPointsByTeamId from './getTotalPointsByTeamId';
 
 const getEfficiencyByTeamId = (matches: IMatches[], id: number, filter: Tfilter) => {
-  const efficiency = (getTotalPointsByTeamId(matches, id) * 100)
+  const efficiency = (getTotalPointsByTeamId(matches, id, filter) * 100)
   / (getTotalGamesByTeamId(matches, id, filter) * 3);
 
   return Number(efficiency.toFixed(2));

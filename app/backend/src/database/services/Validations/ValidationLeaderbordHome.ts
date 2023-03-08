@@ -16,13 +16,13 @@ const matchesArray = (matches:Matches[]) => {
   return arrayMachesFinished;
 };
 
-// Arthur Debiasi me ajudou
+// Arthur Debiasi, Sergio Ruza me ajudou a elaborar a lógica.
 const getLeaderboardByFilter = (teams: Teams[], matches: Matches[], filter: Tfilter) => {
   const matchesFinished = matchesArray(matches);
 
   const arrayTeams = teams.map((team: Teams) => ({
     name: team.dataValues.teamName,
-    totalPoints: getTotalPointsByTeamId(matchesFinished, team.id),
+    totalPoints: getTotalPointsByTeamId(matchesFinished, team.id, filter),
     totalGames: getTotalGamesByTeamId(matchesFinished, team.id, filter),
     totalVictories: getTotalVictoriesByTeamId(matchesFinished, team.id, filter),
     totalDraws: getTotalDrawsByTeamId(matchesFinished, team.id, filter),
@@ -33,7 +33,6 @@ const getLeaderboardByFilter = (teams: Teams[], matches: Matches[], filter: Tfil
     - getTotalGoalsOwnByTeamId(matchesFinished, team.id, filter),
     efficiency: getEfficiencyByTeamId(matchesFinished, team.id, filter),
   }));
-  // console.log('=>', matchesFinished[0]);
 
   return arrayTeams;
 };
