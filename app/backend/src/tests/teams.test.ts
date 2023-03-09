@@ -22,4 +22,12 @@ describe('Testes para a rota Teams', function () {
     expect(response.body).to.be.deep.equal(team)
   });
 
+
+  it('Deve buscar um time por ID com sucesso', async function () {
+    sinon.stub(Teams, 'findByPk').resolves(team[0] as Teams)
+    const response = await chai.request(app).get('/teams/1').send(team);
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal(team[0])
+  });
+
 });
