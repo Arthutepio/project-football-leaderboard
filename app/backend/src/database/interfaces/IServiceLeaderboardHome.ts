@@ -1,5 +1,3 @@
-// import Teams from '../models/Teams';
-// import ILeaderboardHome from './ILeaderboardHome';
 import ILeaderboard from './ILeaderboard';
 import { Tfilter } from './TFilter';
 
