@@ -11,21 +11,13 @@ export default class MatchesController {
 
   async getAllMatches(req: Request, res: Response) {
     const { inProgress } = req.query;
-    if (inProgress === 'true') {
-      const matchesInProgress = await this._matchesService
-        .getMatchesInProgress(inProgress as string);
+    const matchesInProgress = await this._matchesService.getMatchesInProgress(inProgress as string);
 
-      return res.status(200).json(matchesInProgress);
-    }
-    if (inProgress === 'false') {
-      const matchesInProgress = await this._matchesService
-        .getMatchesFinished(inProgress as string);
-
+    if (inProgress) {
       return res.status(200).json(matchesInProgress);
     }
 
     const matches = await this._matchesService.getAllMatches();
-
     return res.status(200).json(matches);
   }
 

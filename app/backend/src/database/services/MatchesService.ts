@@ -41,26 +41,6 @@ export default class MatchesService implements IServiceMatches {
     });
   }
 
-  // redundate !== Sergio
-  getMatchesFinished(progress: string) {
-    return this.model.findAll({
-      where: { inProgress: progress },
-      include: [
-        {
-          model: Teams,
-          as: 'homeTeam',
-          attributes: ['teamName'],
-        },
-        {
-          model: Teams,
-          as: 'awayTeam',
-          attributes: ['teamName'],
-        },
-      ],
-    });
-  }
-
-  // pra finalizar uma partida recebe ID e fazer um UPDATE em inProgress de TRUE pra FALSE e retornar status 200 e { "message": "Finished" }
   finishMatchesById(id: number): string {
     this.model.update(
       { inProgress: 'false' },
