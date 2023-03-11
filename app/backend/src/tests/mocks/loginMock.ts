@@ -9,7 +9,7 @@ export const userModel = {
 export const tokenMock = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY3ODM3MjMyNywiZXhwIjoxNjgwOTY0MzI3fQ.Yp-PdUi2bhHU9pbf49xSijPLZXNsxn5IV52Zb0FQaZ0"
 
 
-export const validLogin = {
+export const validLoginMock = {
   email: 'user@user.com',
   password: 'secret_user'
 }

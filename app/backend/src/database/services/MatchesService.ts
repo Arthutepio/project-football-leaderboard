@@ -61,6 +61,7 @@ export default class MatchesService implements IServiceMatches {
     return updatedScoreboard;
   }
 
+  // Richard me ajudou com a lógica
   async insertMaches(
     homeTeamId: number,
     awayTeamId: number,

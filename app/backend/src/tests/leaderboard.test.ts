@@ -8,7 +8,8 @@ import Teams from '../database/models/Teams';
 import Matches from '../database/models/Matches';
 import { teamsListMock } from './mocks/teamsMock';
 // import { matchesListMock } from './mocks/matchMock';
-import { leaderboardMock } from './mocks/leaderMock';
+import { leaderboardMock, matchesMock } from './mocks/leaderMock';
+import { mockfindAll } from './mocks/matchMock';
 
 chai.use(chaiHttp);
 
@@ -21,10 +22,10 @@ describe('', () => {
   })
 
   // it('Retorna status 200 e a classificação das equipes corretamente', async () => {
-  //   sinon.stub(Teams, 'findAll').resolves(teamsListMock as Teams[]);
-  //   sinon.stub(Matches, 'findAll').resolves(matchesListMock as Matches[]);
-  //   const res = await chai.request(app).get('/leaderboard/home');
-  //   expect(res.status).to.be.eq(200); 
-  //   expect(res.body).to.be.deep.eq(leaderboardMock);
+  //   // sinon.stub(Teams, 'findAll').resolves(teamsListMock as Teams[]);
+  //   sinon.stub(Matches, 'findAll').resolves(mockfindAll as unknown as Matches[]);
+  //   const response = await chai.request(app).get('/leaderboard/home');
+  //   expect(response.status).to.be.equal(200); 
+  //   // expect(res.body).to.be.deep.eq(leaderboardMock);
   // });
 });

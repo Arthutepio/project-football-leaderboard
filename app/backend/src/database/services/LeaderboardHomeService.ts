@@ -14,6 +14,7 @@ export default class LeaderboardHomeService implements IServiceLeaderbordHome {
   async getLeaderboard(filter: Tfilter): Promise<ILeaderboard[]> {
     const teams = await this.modelTeams.findAll();
     const matches = await this.modelMatches.findAll();
+
     const ranking = getLeaderboardByFilter(teams, matches, filter);
 
     return sortTeamRanking(ranking);
