@@ -7,7 +7,7 @@ import { app } from '../app';
 import Teams from '../database/models/Teams';
 import Matches from '../database/models/Matches';
 import { teamsListMock } from './mocks/teamsMock';
-import { matchesListMock } from './mocks/matchMock';
+// import { matchesListMock } from './mocks/matchMock';
 import { leaderboardMock } from './mocks/leaderMock';
 
 chai.use(chaiHttp);
