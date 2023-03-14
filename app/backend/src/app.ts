@@ -4,6 +4,7 @@ import loginRouter from './database/routes/LoginRoute';
 import matchesRouter from './database/routes/MatchesRoute';
 import teamsRouter from './database/routes/TeamsRoute';
 
+
 class App {
   public app: express.Express;
 
