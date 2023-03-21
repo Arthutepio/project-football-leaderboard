@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: Mint-20.3
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout de projeto
         uses: actions/checkout@v3
