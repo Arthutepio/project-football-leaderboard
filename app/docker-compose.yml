@@ -19,7 +19,7 @@ services:
     container_name: app_backend
     build: ./backend
     ports:
-      - 3001:3001
+      - 3007:3007
     platform: linux/x86_64
     working_dir: /app-backend
     # Caso queira que o container esteja atualizado durante o desenvolvimento, sem que você precise ficar fazendo down e up dos containers, descomente as 3 linhas abaixo
@@ -30,7 +30,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - PORT=3001
+      - PORT=3007
       - JWT_SECRET=jwt_secret
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
@@ -39,7 +39,7 @@ services:
       - MYSQLHOST=db
       - MYSQLPORT=3306
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:3007"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
       retries: 5
   db:
