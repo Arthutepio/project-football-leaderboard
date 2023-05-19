@@ -49,7 +49,7 @@ const Login = () => {
       <section className="user-login-area">
         <img src={ positiveLogo } alt="Trybe Futebol Clube Negative Logo" />
         <form>
-          <h1>Área do usuário</h1>
+          <h1>Área do Usuário</h1>
           <label htmlFor="email-input">
             <input
               className="login__login_input"
