@@ -4,7 +4,9 @@ O projeto Football Leaderboard tem como objetivo criar uma tabela de classifica�
 
 Para tanto, desenvolvi um back-end dockerizado, utilizando modelagem de dados por meio do Sequelize, em que se respeitaram as regras de negócio. A API foi concebida para ser consumida por um front-end, já provido nesse projeto.
 
-### 🔧 Instalação
+![Exemplo app front](assets/front-example.png)
+
+## 🔧 Instalação
 Para utilizar o repositório no desenvolvimento, siga os seguintes passos:
 
 1 - Clone o repositório: 
